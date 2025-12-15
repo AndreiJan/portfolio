@@ -19,5 +19,5 @@ jobs:
         password: ${{ secrets.FTP_PASSWORD }}
         port: 22
         local_path: './*'
-        remote_path: '/home/hestadmin/web/andreimendoza.ca/public_html'
+        remote_path: '/home/hestadmin/web/andreimendoza.ca/public_html/'
         sftp_only: true
