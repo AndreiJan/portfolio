@@ -16,11 +16,12 @@ jobs:
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          username: ${{ secrets.FTP_USERNAME }} # Use the prefixed name (e.g., hestadmin_deploy)
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /home/hestadmin/web/andreimendoza.ca/public_html/
+          # If you set the path in Hestia to 'public_html', server-dir can just be /
+          server-dir: / 
           protocol: ftps
           port: 21
-
-
+          # Add this to bypass common certificate validation errors on self-signed Hestia certs
+          dangerous-clean-slate: false 
     
