@@ -19,4 +19,8 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /home/hestadmin/web/andreimendoza.ca/public_html/
+          protocol: ftps
           port: 21
+
+
+    
