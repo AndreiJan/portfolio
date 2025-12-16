@@ -1,23 +1,23 @@
-name: Deploy via SFTP
+name: Deploy to Hestia via FTP
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main # or whatever branch you want to deploy from
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: SFTP Deploy
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-      with:
-        server: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        port: 22
-        local_path: './*'
-        remote_path: '/home/hestadmin/web/andreimendoza.ca/public_html/'
-        sftp_only: true
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-directory: /public_html/ # Set the path to your website's public HTML folder in Hestia
+          # Optional: Add exclude: .github/** to ignore the workflow files themselves
