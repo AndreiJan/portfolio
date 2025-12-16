@@ -12,14 +12,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-      - name: 📂 Sync files
+      - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # OPTION 1: If Hestia path was set to 'public_html'
-          server-dir: ./ 
-          
-          # OPTION 2: If Hestia path was empty
-          # server-dir: web/yourdomain.com
+          server-dir: /home/hestadmin/web/andreimendoza.ca/public_html/
