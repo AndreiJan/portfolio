@@ -18,4 +18,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: public_html/  # Use this correct parameter name
+          # OPTION 1: If Hestia path was set to 'public_html'
+          server-dir: ./ 
+          
+          # OPTION 2: If Hestia path was empty
+          # server-dir: web/yourdomain.com
