@@ -20,8 +20,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           # If you set the path in Hestia to 'public_html', server-dir can just be /
           server-dir: / 
-          protocol: ftps
-          port: 21
+
           # Add this to bypass common certificate validation errors on self-signed Hestia certs
-          dangerous-clean-slate: false 
     
