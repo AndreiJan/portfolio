@@ -94,7 +94,15 @@ export default function Home() {
             </div>
             <FadeInSection scrollDirection={scrollDir}>
               <h1 className="text-2xl pb-2 font-bold font-mono tracking-[.3em]">About Me</h1>
-              <p className="text-1xl text-white">I am an aspiring full-stack developer with a passion for all things relating to tech. I enjoy building websites, solving complex problems and constantly exploring new tools and technologies. Whether it's front-end design or back-end logic, I love taking on projects that challenge me to learn and grow as a developer. I'm always looking for opportunities to collaborate, improve my skils, and create something meaningful through code. </p>
+              <p className="text-1xl text-white">
+                  I am an aspiring full-stack developer with a passion for all things relating to tech. 
+                  I enjoy building websites, solving complex problems and constantly exploring new tools 
+                  and technologies. Whether it is front-end design or back-end logic, I love taking on 
+                  projects that challenge me to learn and grow as a developer. I am always looking for 
+                  opportunities to collaborate, improve my skils, and create something meaningful through code.
+                </p>
+
+              
             </FadeInSection>
 
             <div>
