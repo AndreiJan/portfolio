@@ -1,25 +1,35 @@
-name: Deploy to Hestia via FTP
+name: Deploy Next.js to Hestia via FTP
 
 on:
   push:
     branches:
-      - main # or whatever branch you want to deploy from
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          fetch-depth: 2
-      - name: FTP Deploy
+          node-version: 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and export Next.js
+        run: npm run prod
+
+      - name: FTP Deploy static site
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
           server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }} # Use the prefixed name (e.g., hestadmin_deploy)
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          # If you set the path in Hestia to 'public_html', server-dir can just be /
+          local-dir: out/
           server-dir: /home/hestadmin/web/andreimendoza.ca/public_html/
-
-          # Add this to bypass common certificate validation errors on self-signed Hestia certs
-    
